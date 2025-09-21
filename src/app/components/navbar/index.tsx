@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import Container from '../container'
 import Image from 'next/image'
-import Link from 'next/link'
+import { Link } from 'next-view-transitions'
 import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion'
 
 const Navbar = () => {
@@ -32,13 +32,16 @@ const Navbar = () => {
         transition={{ duration: 0.2, ease: 'easeInOut' }}
         className="flex z-50 fixed bg-neutral-100 dark:bg-neutral-900 inset-x-0 top-0 max-w-4xl mx-auto rounded-full items-center justify-between px-4 py-2"
       >
-        <Image
+        <Link href="/">
+         <Image
           className="h-12 w-12 rounded-full"
           src="/deep-pro.jpg"
           width={100}
           height={100}
           alt="logo"
         />
+         </Link>
+       
 
         <div className="flex items-center">
           {navItems.map((item, index) => (

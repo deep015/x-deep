@@ -14,6 +14,7 @@ const Home = () => {
         I’m a software engineer driven by innovation, with experience in creating seamless and reliable digital experiences.
       </p>
       <Projects />
+      
       </Container>
     </div>
   )
