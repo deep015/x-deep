@@ -2,7 +2,7 @@ import { promises as fs } from 'fs';
 import { compileMDX } from 'next-mdx-remote/rsc';
 import path from 'path';
 
-type FrontMatter = {
+ type FrontMatter = {
     title: string;
     description: string;
     date: string;
