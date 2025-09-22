@@ -2,6 +2,8 @@
 import React from 'react'
 import Container from './components/container'
 import Projects from './components/projects'
+import LandingBlog from './components/landingPage'
+
 
 const Home = () => {
   return (
@@ -14,7 +16,7 @@ const Home = () => {
         I’m a software engineer driven by innovation, with experience in creating seamless and reliable digital experiences.
       </p>
       <Projects />
-      
+     <LandingBlog />
       </Container>
     </div>
   )

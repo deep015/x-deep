@@ -1,79 +1,136 @@
-import { promises as fs } from 'fs';
-import { compileMDX } from 'next-mdx-remote/rsc';
-import path from 'path';
+// utils/mdx.ts
+import { promises as fs } from "fs";
+import path from "path";
+import { compileMDX } from "next-mdx-remote/rsc";
 
- type FrontMatter = {
-    title: string;
-    description: string;
-    date: string;
-    image: string;
+// -----------------------------
+// Types
+// -----------------------------
+export interface FrontMatter {
+  title: string;
+  description: string;
+  date: string;
+  image: string;
 }
-export type Blog = {
-  slug: string;
-} & FrontMatter;
 
-// Get a single blog's content and frontmatter
-export const getSingleBlog = async (slug: string) => {
-    try {
-        const singleBlog = await fs.readFile(
-            path.join(process.cwd(), 'src/app/data/', `${slug}.mdx`),
-            'utf-8'
-        );
+export type Blog = FrontMatter & { slug: string };
 
-        if (!singleBlog) return null;
+export interface SingleBlog {
+  frontmatter: FrontMatter;
+  content: React.ReactNode | string;
+}
 
-        const { content, frontmatter } = await compileMDX<{
-            description: any;
-            title: string; frontmatter: FrontMatter 
+// -----------------------------
+// 1️⃣ Fetch frontmatter only
+// -----------------------------
+export const fetchBlogsFrontMatterBySlug = async (
+  slug: string
+): Promise<FrontMatter> => {
+  try {
+    const fileContent = await fs.readFile(
+      path.join(process.cwd(), "src/app/data/", `${slug}.mdx`),
+      "utf-8"
+    );
+
+    const { frontmatter: rawFrontmatter } = await compileMDX<{
+        title: string;
+        description: string;
+        date: string;
+        image: string; frontmatter: Partial<FrontMatter> 
 }>({
-            source: singleBlog || '',
-            options: { parseFrontmatter: true },
-        });
+      source: fileContent,
+      options: { parseFrontmatter: true },
+    });
 
-        return { content, frontmatter };
-    } catch (error) {
-        console.error(`Error reading blog file for slug "${slug}":`, error);
-        return null;
-    }
-}
+    // ✅ Construct a complete FrontMatter object
+    const frontmatter: FrontMatter = {
+      title: rawFrontmatter?.title || "Untitled",
+      description: rawFrontmatter?.description || "No description",
+      date: rawFrontmatter?.date || new Date().toISOString(),
+      image: rawFrontmatter?.image || "/default-image.png",
+    };
 
-// Get all blogs with frontmatter
-export const getBlogs = async () => {
-    try {
-        const files = await fs.readdir(path.join(process.cwd(), 'src/app/data/'));
+    return frontmatter;
+  } catch (error) {
+    console.error(`Error fetching frontmatter for slug "${slug}":`, error);
+    return {
+      title: "Untitled",
+      description: "No description",
+      date: new Date().toISOString(),
+      image: "/default-image.png",
+    };
+  }
+};
 
-        const allBlogs = await Promise.all(
-            files.map(async (file) => {
-                const slug = file.replace('.mdx', '');
-                const frontmatter = await fetchBlogsFrontMatterBySlug (slug);
-                return { slug, ...frontmatter };
-            })
-        );
 
-        return allBlogs;
-    } catch (error) {
-        console.error('Error fetching blogs:', error);
-        return [];
-    }
-}
+// -----------------------------
+// 2️⃣ Get single blog (frontmatter + content)
+// -----------------------------
+export const getSingleBlog = async (slug: string): Promise<SingleBlog | null> => {
+  try {
+    const fileContent = await fs.readFile(
+      path.join(process.cwd(), "src/app/data/", `${slug}.mdx`),
+      "utf-8"
+    );
 
-// Extract frontmatter only
-export  const fetchBlogsFrontMatterBySlug  = async (slug: string): Promise<FrontMatter | {}> => {
-    try {
-        const fileContent = await fs.readFile(
-            path.join(process.cwd(), 'src/app/data/', `${slug}.mdx`),
-            'utf-8'
-        );
+    if (!fileContent) return null;
 
-        const { frontmatter } = await compileMDX<{ frontmatter: FrontMatter }>({
-            source: fileContent,
-            options: { parseFrontmatter: true },
-        });
+    const { frontmatter, content } = await compileMDX<{
+        title: string;
+        description: string;
+        date: string;
+        image: string; frontmatter: Partial<FrontMatter> 
+}>({
+      source: fileContent,
+      options: { parseFrontmatter: true },
+    });
 
-     return frontmatter || { title: '', description: '' };
-    } catch (error) {
-        console.error(`Error fetching frontmatter for slug "${slug}":`, error);
-        return {};
-    }
-}
+    // ✅ Fill missing properties with defaults
+    const safeFrontmatter: FrontMatter = {
+      title: frontmatter?.title || "Untitled",
+      description: frontmatter?.description || "No description",
+      date: frontmatter?.date || new Date().toISOString(),
+      image: frontmatter?.image || "/default-image.png",
+    };
 
+    return { frontmatter: safeFrontmatter, content };
+  } catch (error) {
+    console.error(`Error reading blog file for slug "${slug}":`, error);
+    return null;
+  }
+};
+
+// -----------------------------
+// 3️⃣ Get all blogs with frontmatter
+// -----------------------------
+export const getBlogs = async (): Promise<Blog[]> => {
+  try {
+    const files = await fs.readdir(path.join(process.cwd(), "src/app/data/"));
+
+    const allBlogs = await Promise.all(
+      files.map(async (file) => {
+        const slug = file.replace(/\.mdx$/, "");
+        const frontmatter = await fetchBlogsFrontMatterBySlug(slug);
+        return { slug, ...frontmatter };
+      })
+    );
+
+    return allBlogs;
+  } catch (error) {
+    console.error("Error fetching blogs:", error);
+    return [];
+  }
+};
+
+// -----------------------------
+// 4️⃣ Get all slugs for SSG
+// -----------------------------
+export const getAllBlogSlugs = async (): Promise<string[]> => {
+  try {
+    const files = await fs.readdir(path.join(process.cwd(), "src/app/data/"));
+    return files.map((file) => file.replace(/\.mdx$/, ""));
+  } catch (error) {
+    console.error("Error reading blog slugs:", error);
+    return [];
+  }
+};

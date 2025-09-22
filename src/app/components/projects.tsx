@@ -8,17 +8,17 @@ const Projects = () => {
   const projects = [
     {
       "title": "Personal Portfolio Website",
-      "src": "https://pro.aceternity.com/_next/image?url=https%3A%2F%2Fassets.aceternity.com%2Ftemplates%2Fcryptgen-1.webp&w=1080&q=75",
+      "src": "/deep-pro.jpg",
       "description": "A responsive and modern personal portfolio website built with React and Tailwind CSS to showcase projects, skills, and contact information."
     },
     {
       "title": "E-Commerce Platform",
-      "src": "https://pro.aceternity.com/_next/image?url=https%3A%2F%2Fassets.aceternity.com%2Ftemplates%2Fcryptgen-1.webp&w=1080&q=75",
+      "src": "/deep-pro.jpg",
       "description": "A full-stack e-commerce web application using MERN stack with features like product listings, shopping cart, and payment integration."
     },
     {
       "title": "Blog CMS System",
-      "src": "https://pro.aceternity.com/_next/image?url=https%3A%2F%2Fassets.aceternity.com%2Ftemplates%2Fproactiv-screenshot-1.png&w=1080&q=75",
+      "src": "/deep-pro.jpg",
       "description": "A content management system for blogging, allowing users to create, edit, and manage posts with rich text and media support."
     }
   ];

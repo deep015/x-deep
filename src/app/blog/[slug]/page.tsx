@@ -2,17 +2,23 @@
 import React from "react";
 import Container from "../../components/container";
 import { redirect } from "next/navigation";
-import { fetchBlogsFrontMatterBySlug, getSingleBlog, getBlogs } from "../../utils/mdx";
+import { fetchBlogsFrontMatterBySlug, getSingleBlog, getAllBlogSlugs, FrontMatter } from "../../utils/mdx";
 
-
+// -----------------------------
+// 1️⃣ Generate static params for SSG
+// -----------------------------
+export async function generateStaticParams() {
+  const slugs = await getAllBlogSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
 
 // -----------------------------
 // 2️⃣ Metadata generator
 // -----------------------------
 export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const frontmatter = await fetchBlogsFrontMatterBySlug(params.slug);
-  
-  if (!frontmatter || !("title" in frontmatter)) {
+  const slug = params.slug; // use a local constant
+  const frontmatter = await fetchBlogsFrontMatterBySlug(slug);
+  if (!frontmatter.title) {
     return {
       title: "Blog not found",
       description: "The requested blog does not exist.",
@@ -20,21 +26,27 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 
   return {
-    title: frontmatter.title + "-Deep",
-    description: frontmatter.description,
+    title: `${frontmatter.title} - Deep`,
+    description: frontmatter.description || "",
   };
 }
 
+// -----------------------------
+// 3️⃣ Page component
+// -----------------------------
 export default async function SingleBlogPage({ params }: { params: { slug: string } }) {
   const blog = await getSingleBlog(params.slug);
 
-  if (!blog) redirect("/blog");
+  if (!blog) {
+    redirect("/blog"); // Redirect if blog not found
+  }
 
-  const { frontmatter, content } = blog;
+  const { frontmatter, content } = blog!;
 
   return (
     <div className="min-h-screen flex items-start justify-start">
       <Container className="min-h-[200vh] p-10 md:pt-26 md:pb-14">
+        <h1 className="text-4xl font-bold mb-6">{frontmatter.title}</h1>
         <div className="prose mx-auto">{content}</div>
       </Container>
     </div>
