@@ -3,20 +3,22 @@ import React, { useState } from 'react'
 import Container from '../container'
 import Image from 'next/image'
 import { Link } from 'next-view-transitions'
-import { motion, AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValueEvent, useScroll, useTransform } from 'framer-motion'
 
 const Navbar = () => {
   const navItems = [
     { title: 'About', href: '/about' },
     { title: 'Projects', href: '/project' },
     { title: 'Contact', href: '/contact' },
-    { title: 'Blog', href: '#/blog' }
+    { title: 'Blog', href: '/blog' }
   ]
 
   const [hovered, setHovered] = useState<number | null>(null)
   const { scrollY } = useScroll()
   const [scrolled, setScrolled] = useState(false)
-
+ 
+  const y = useTransform(scrollY, [0, 100], [0, 10])
+      const width = useTransform(scrollY, [0, 100], ['80%', '50%'])
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 20)
   })
@@ -24,13 +26,13 @@ const Navbar = () => {
   return (
     <Container className="relative">
       <motion.nav
-        animate={{
+        style={{
           boxShadow: scrolled ? 'var(--shadow-aceternity)' : 'none',
-          width: scrolled ? '60%' : '100%',
-          y: scrolled ? 10 : 0
+         width,
+           y,
         }}
         transition={{ duration: 0.2, ease: 'easeInOut' }}
-        className="flex z-50 fixed bg-neutral-100 dark:bg-neutral-900 inset-x-0 top-0 max-w-4xl mx-auto rounded-full items-center justify-between px-4 py-2"
+        className="flex z-50 fixed bg-white dark:bg-neutral-900 inset-x-0 top-0 max-w-4xl mx-auto rounded-full items-center justify-between px-4 py-2"
       >
         <Link href="/">
          <Image
