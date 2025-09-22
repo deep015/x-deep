@@ -45,7 +45,7 @@ export default async function SingleBlogPage({ params }: { params: { slug: strin
 
   return (
     <div className="min-h-screen flex items-start justify-start">
-      <Container className="min-h-[200vh] p-10 md:pt-26 md:pb-14">
+      <Container className="min-h-screen p-10 md:pt-26 md:pb-14">
         <img
         className=" my-20 object-cover max-h-96 w-full border border-neutral-200 
         max-w-2xl mx-auto   rounded-2xl shadow-xl"

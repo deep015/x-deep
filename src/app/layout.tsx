@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "./components/navbar";
 import { ViewTransitions } from 'next-view-transitions'
 import Footer from "./components/navbar/footer";
+import { Toaster } from "sonner";
 
 
 
@@ -26,6 +27,7 @@ export default function RootLayout({
       <body className={`antialiased min-h-screen w-full bg-neutral-200 dark:bg-neutral-700 ${inter.className}`}
       suppressHydrationWarning
       >
+        <Toaster position="top-center"/>
           <Navbar />
   
         {children}

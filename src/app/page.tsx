@@ -12,7 +12,7 @@ const Home = () => {
   return (
     <div className='min-h-screen flex items-start justify-start '>
      
-      <Container className='min-h-[200vh] p-10 md:pt-26 md:pb-14'>
+      <Container className='min-h-screen p-10 md:pt-26 md:pb-14'>
       
       <Heading>Hello , there ! 👋</Heading>
       <SubHeading >
