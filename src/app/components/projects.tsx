@@ -3,32 +3,25 @@
 import Image from 'next/image'
 import React from 'react'
 import {motion} from 'framer-motion'
+import { Project,projects as defaultProjects } from '../../constants//project';
+import SectionHeading from './sectionheading';
 
-const Projects = () => {
-  const projects = [
-    {
-      "title": "Personal Portfolio Website",
-      "src": "/deep-pro.jpg",
-      "description": "A responsive and modern personal portfolio website built with React and Tailwind CSS to showcase projects, skills, and contact information."
-    },
-    {
-      "title": "E-Commerce Platform",
-      "src": "/deep-pro.jpg",
-      "description": "A full-stack e-commerce web application using MERN stack with features like product listings, shopping cart, and payment integration."
-    },
-    {
-      "title": "Blog CMS System",
-      "src": "/deep-pro.jpg",
-      "description": "A content management system for blogging, allowing users to create, edit, and manage posts with rich text and media support."
-    }
-  ];
+const Projects = ({
+  projects=defaultProjects
+}:
+  {
+    projects:Project[]
+  }
+) => {
+  
 
   return (
     <div className='py-5'>
-        <p className='text-secondary max-w-lg pt-4 text-sm md:text-sm py-2'>
-       I enjoy designing web applications and products that make a real difference for people everywhere.        </p>
-        {/* Changed gap-23 to gap-4 for a valid Tailwind CSS class */}
- <div className='grid grid-cols-1 md:grid-cols-2 gap-5 py-5'>
+   <SectionHeading delay={0.2}>
+       A lifetime in projects.
+      </SectionHeading>
+        
+ <div className='grid grid-cols-1 md:grid-cols-3 gap-5 py-5'>
   {projects.map((project, index) => (
     <motion.div
       initial={{ opacity: 0, filter: 'blur(10px)', y: 10 }}

@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
 import { getBlogs, Blog } from "../utils/mdx";
+import SectionHeading from "./sectionheading";
+import MotionDiv from "./motion-div";
 
 const truncate = (str: string, length: number) =>
   str.length > length ? str.substring(0, length) + "..." : str;
@@ -20,7 +22,19 @@ export default async function LandingBlog() {
 
   return (
     <div className="flex flex-col gap-8 mt-2">
-      {allBlogs.map((blog) => (
+      <SectionHeading className="pb-4" delay={0.2}>
+        I Love writing things down.
+      </SectionHeading>
+      {allBlogs.map((blog,idx) => (
+        <MotionDiv 
+        key={blog.slug}
+        initial={{opacity:0}}
+        animate={{opacity:1}}
+        transition={{
+          duration:0.3,
+          delay:idx*0.1
+        }}
+        >
         <Link
           href={`/blog/${blog.slug}`}
           key={blog.slug}
@@ -40,6 +54,7 @@ export default async function LandingBlog() {
             {truncate(blog.description, 100)}
           </p>
         </Link>
+        </MotionDiv>
       ))}
     </div>
   );

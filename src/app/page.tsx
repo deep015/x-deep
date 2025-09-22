@@ -2,9 +2,12 @@
 import React from 'react'
 import Container from './components/container'
 import Projects from './components/projects'
-import BlogPage from './blog/page'
+
 import Heading from './components/heading'
 import SubHeading from './components/subHeading'
+import { projects } from '@/constants/project'
+import LandingBlog from './components/landingPage'
+import Testnomials from './components/testinomials'
 //import LandingBlog from './components/landingPage'
 
 
@@ -13,13 +16,13 @@ const Home = () => {
     <div className='min-h-screen flex items-start justify-start '>
      
       <Container className='min-h-screen p-10 md:pt-26 md:pb-14'>
-      
       <Heading>Hello , there ! 👋</Heading>
       <SubHeading >
         I’m a software engineer driven by innovation, with experience in creating seamless and reliable digital experiences.
       </SubHeading>
-      <Projects />
-     <BlogPage />
+      <Projects projects={projects.slice(0,2)} />
+     <LandingBlog />
+     <Testnomials />
       </Container>
     </div>
   )
