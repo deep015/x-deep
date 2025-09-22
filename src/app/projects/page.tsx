@@ -1,29 +1,22 @@
-
 import React from 'react'
 import Container from '../components/container'
-import Timeline from '../components/timeline'
+import Projects from '../components/projects'
 import Heading from '../components/heading'
 import SubHeading from '../components/subHeading'
 
-//import LandingBlog from './components/landingPage'
-
-
-const AboutPage = () => {
+const ProjectPage = () => {
   return (
-    <div className='min-h-screen flex items-start justify-start '>
+  <div className='min-h-screen flex items-start justify-start '>
      
       <Container className='min-h-[200vh] p-10 md:pt-26 md:pb-14'>
-      <Heading>About me !</Heading>
+      <Heading>Projects! 👋</Heading>
       <SubHeading>
         I’m a software engineer driven by innovation, with experience in creating seamless and reliable digital experiences.
       </SubHeading>
-      <SubHeading>
-        Here is a Timeline of my life achivements .
-      </SubHeading>
-      <Timeline />
-   </Container>
+      <Projects />
+      </Container>
     </div>
   )
 }
 
-export default AboutPage
+export default ProjectPage

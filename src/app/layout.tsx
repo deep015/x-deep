@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
 import { ViewTransitions } from 'next-view-transitions'
+import Footer from "./components/navbar/footer";
 
 
 
@@ -29,7 +30,7 @@ export default function RootLayout({
   
         {children}
 
-       
+       <Footer />
       </body>
     </html>
     </ViewTransitions>
