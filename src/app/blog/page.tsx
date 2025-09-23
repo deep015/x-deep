@@ -4,6 +4,7 @@ import Container from '../components/container'
 import { getBlogs } from '../utils/mdx'
 import Link from 'next/link'  // use built-in Next.js Link for server components
 import { Metadata } from 'next'
+import Scales from '../components/scales'
 
  export const metadata:Metadata = {
     title: 'All Blogs - Deepraj',
@@ -30,6 +31,7 @@ const BlogPage = async () => {
     return (
         <div className='min-h-screen flex items-start justify-start'>
             <Container className='min-h-[200vh] p-10 md:pt-26 md:pb-14'>
+              <Scales />
                 <h1 className='text-2xl font-bold md:text-4xl tracking-tighter text-primary'>
                     All Blogs
                 </h1>

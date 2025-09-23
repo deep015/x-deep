@@ -72,7 +72,7 @@ const Timeline: React.FC = () => {
   ];
 
   return (
-    <div ref={ref} className="space-y-6">
+    <div ref={ref} className="shadow-section-inset px-4 py-4 my-6 space-y-2">
       {data.map((year, yearIdx) => (
         <motion.div
           key={year.title}
@@ -80,14 +80,14 @@ const Timeline: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, delay: 0.1 * yearIdx }}
-          className="flex flex-col gap-4 "
+          className="flex flex-col gap-4 mb-2"
         >
           {/* Year / Date */}
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 10 }}
             transition={{ duration: 0.5, delay: 0.1 * yearIdx }}
-            className="font-bold px-2 w-fit py-0.5  mb-2 text-black text-sm rounded-md shadow-aceternity"
+            className="font-bold px-2 w-fit py-0.5  mb-1 text-black text-sm rounded-md shadow-aceternity"
           >
             {year.title}
           </motion.h2>
@@ -116,7 +116,7 @@ const Timeline: React.FC = () => {
                       y: isInView ? 0 : 5,
                     }}
                     transition={{ duration: 0.4, delay: 0.05 * contentIdx + 0.1 }}
-                    className="text-neutral-400 text-sm pl-6"
+                    className="text-neutral-400 text-sm pl-6 pb-2"
                   >
                     {item.description}
                   </motion.p>

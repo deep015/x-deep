@@ -16,7 +16,7 @@ const Projects = ({
   
 
   return (
-    <div className='py-5'>
+    <div className='my-4 border-y border-neutral-100 px-4 shadow-section-inset'>
    <SectionHeading delay={0.2}>
        A lifetime in projects.
       </SectionHeading>

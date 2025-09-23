@@ -3,6 +3,7 @@ import Link from "next/link";
 import { getBlogs, Blog } from "../utils/mdx";
 import SectionHeading from "./sectionheading";
 import MotionDiv from "./motion-div";
+import { div } from "framer-motion/client";
 
 const truncate = (str: string, length: number) =>
   str.length > length ? str.substring(0, length) + "..." : str;
@@ -21,7 +22,8 @@ export default async function LandingBlog() {
   const allBlogs: Blog[] = await getBlogs();
 
   return (
-    <div className="flex flex-col gap-8 mt-1">
+    <div className="px-4">
+ <div className="flex flex-col gap-8 mt-1">
       <SectionHeading className="pb-2" delay={0.2}>
         I Love writing things down.
       </SectionHeading>
@@ -57,5 +59,7 @@ export default async function LandingBlog() {
         </MotionDiv>
       ))}
     </div>
+    </div>
+   
   );
 }

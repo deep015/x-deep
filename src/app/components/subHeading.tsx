@@ -16,7 +16,8 @@ const SubHeading: React.FC<HeadingProps> = ({ as: Tag = "h2", children, }) => {
           whileInView={{ opacity: 1,filter:"blur(0px)", y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease:"easeInOut"}}>
-<Tag className ='text-secondary max-w-lg pt-4 text-sm md:text-sm'>
+<Tag className ='text-secondary max-w-lg pt-4 px-4
+ text-sm md:text-sm'>
       {children}
     </Tag>
     </motion.div>

@@ -16,7 +16,8 @@ const Heading: React.FC<HeadingProps> = ({ as: Tag = "h1", children }) => {
           transition={{ duration: 0.5, ease:"easeInOut"}}
           
     >
-    <Tag className="text-2xl drop-shadow-sm font-bold md:text-4xl tracking-tighter text-primary">
+    <Tag className="text-2xl px-4 drop-shadow-sm font-bold md:text-4xl tracking-tighter
+     text-primary">
       {children}
     </Tag>
     </motion.div>

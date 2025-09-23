@@ -16,7 +16,7 @@ const SectionHeading = ({
   return (
     <h2
       className={cn(
-        "text-secondary font-normal max-w-lg pt-4 text-sm md:text-sm",
+        "text-secondary font-normal max-w-lg  pt-4 text-sm md:text-sm",
         className
       )}
     >

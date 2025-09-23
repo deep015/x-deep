@@ -37,7 +37,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="py-10">
+    <div className="py-4 my-4 px-4 shadow-section-inset">
 
     <SectionHeading className="pb-4" delay={0.8}>
       People Love my work

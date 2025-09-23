@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Inter } from "next/font/google";
 import "./globals.css";
-import Navbar from "./components/navbar";
 import { ViewTransitions } from 'next-view-transitions'
-import Footer from "./components/navbar/footer";
 import { Toaster } from "sonner";
+import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 
 
@@ -22,17 +22,14 @@ export default function RootLayout({
 }>) {
   return (
         <ViewTransitions>
-
-    <html lang="en"  >
-      <body className={`antialiased min-h-screen w-full bg-neutral-200 dark:bg-neutral-700 ${inter.className}`}
+    <html lang="en" >
+      <body className={`antialiased relative min-h-screen w-full [--pattern-fg:var(--color-gray-950)]/5 bg-neutral-50 dark:bg-neutral-700 ${inter.className}`}
       suppressHydrationWarning
       >
-        <Toaster position="top-center"/>
+     <Toaster position="top-center"/>
           <Navbar />
-  
-        {children}
-
-       <Footer />
+          {children}
+        <Footer />
       </body>
     </html>
     </ViewTransitions>
