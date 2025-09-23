@@ -5,7 +5,7 @@ import Container from '../container'
 
 const Footer = () => {
   return (
-    <Container className='flex justify-between px-3 py-3'>
+    <Container className='flex justify-between border-t border-neutral-300 px-6 py-4'>
         <p className=' text-sm text-neutral-500'> Built with Love by Deep</p>
         <div className='flex items-center justify-center gap-4'>
             <Link href='https://github.com/deep015'>

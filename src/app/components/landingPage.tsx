@@ -21,11 +21,11 @@ export default async function LandingBlog() {
   const allBlogs: Blog[] = await getBlogs();
 
   return (
-    <div className="flex flex-col gap-8 mt-2">
-      <SectionHeading className="pb-4" delay={0.2}>
+    <div className="flex flex-col gap-8 mt-1">
+      <SectionHeading className="pb-2" delay={0.2}>
         I Love writing things down.
       </SectionHeading>
-      {allBlogs.map((blog,idx) => (
+      {allBlogs.slice(0, 3).map((blog,idx) => (
         <MotionDiv 
         key={blog.slug}
         initial={{opacity:0}}
@@ -51,7 +51,7 @@ export default async function LandingBlog() {
             )}
           </div>
           <p className="text-secondary max-w-lg pt-2 text-sm md:text-sm">
-            {truncate(blog.description, 100)}
+            {truncate(blog.description, 110)}
           </p>
         </Link>
         </MotionDiv>

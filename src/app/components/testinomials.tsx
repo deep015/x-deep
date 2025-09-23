@@ -1,5 +1,6 @@
 import React from "react";
 import Marquee from "react-fast-marquee";
+import SectionHeading from "./sectionheading";
 
 const Testimonials = () => {
   const data = [
@@ -37,6 +38,10 @@ const Testimonials = () => {
 
   return (
     <div className="py-10">
+
+    <SectionHeading className="pb-4" delay={0.8}>
+      People Love my work
+    </SectionHeading>
         <div className="flex [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
       <Marquee pauseOnHover={true} speed={40} gradient={false} className="py-4">
         
