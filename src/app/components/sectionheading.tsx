@@ -16,10 +16,12 @@ const SectionHeading = ({
   return (
     <h2
       className={cn(
-        "text-secondary font-normal max-w-lg  pt-4 text-sm md:text-sm",
+        "text-secondary w-fit font-normal max-w-lg  relative mt-4 text-sm md:text-sm",
         className
       )}
     >
+      <Background />
+ 
       {children.split(" ").map((word, wordIdx) => (
         <motion.span
           key={word + wordIdx}
@@ -41,3 +43,31 @@ const SectionHeading = ({
 };
 
 export default SectionHeading;
+
+const Background =() =>{
+  return (
+     <motion.div 
+     initial ={{
+      opacity:0,
+     }}
+   
+     whileInView={{
+            opacity:1,
+     }}
+
+     transition={{
+      duration:0.3,
+      ease:'easeInOut'
+     }}
+     className="absolute h-full w-full inset-0 scale-[1.04] bg-neutral-100">
+      <div className="h-1 w-1 animate-pulse rounded-full absolute -top-px  -left-px bg-neutral-200">
+      </div>
+      <div className="h-1 w-1 animate-pulse rounded-full absolute -top-px -right-px bg-neutral-200">
+      </div>
+      <div className="h-1 w-1 animate-pulse rounded-full absolute -bottom-px -left-px bg-neutral-200">
+      </div>
+      <div className="h-1 w-1 animate-pulse rounded-full absolute -bottom-px -right-px bg-neutral-200">
+      </div>
+    </motion.div>
+  )
+}

@@ -24,7 +24,7 @@ export default async function LandingBlog() {
   return (
     <div className="px-4">
  <div className="flex flex-col gap-8 mt-1">
-      <SectionHeading className="pb-2" delay={0.2}>
+      <SectionHeading className="mb-2" delay={0.2}>
         I Love writing things down.
       </SectionHeading>
       {allBlogs.slice(0, 3).map((blog,idx) => (
