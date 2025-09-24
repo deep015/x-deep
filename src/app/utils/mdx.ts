@@ -115,7 +115,12 @@ export const getBlogs = async (): Promise<Blog[]> => {
       })
     );
 
-    return allBlogs;
+    // ✅ Sort blogs by date (descending, most recent first)
+    const sortedBlogs = allBlogs.sort(
+      (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+    );
+
+    return sortedBlogs;
   } catch (error) {
     console.error("Error fetching blogs:", error);
     return [];

@@ -1,0 +1,59 @@
+---
+title: "Tailwind CSS Theming: Designing Consistent and Customizable UI"
+description: "A deep dive into theming with Tailwind CSS—how to create consistent, customizable, and scalable design systems using utility classes."
+img: "/images/tailwind-theming-cover.jpg"
+date: "2025-09-24"
+---
+
+# Tailwind CSS Theming: Designing Consistent and Customizable UI
+
+Modern UI development is not just about **building components**—it’s about ensuring **consistency, scalability, and adaptability**.  
+That’s where **theming in Tailwind CSS** comes in.  
+
+By using Tailwind’s configuration system, you can **centralize design tokens** such as colors, fonts, spacing, and breakpoints. This gives your UI a **unified look and feel**, while still allowing easy customization.
+
+---
+
+## 🔑 What is Theming in Tailwind CSS?
+
+Theming means **defining a design system inside Tailwind’s configuration file** (`tailwind.config.js` or `tailwind.config.ts`).  
+
+Instead of sprinkling hardcoded values (`#1D4ED8`, `16px`, etc.) across your app, you define **reusable tokens** (e.g., `brand`, `spacing.4`, `text-lg`).  
+
+This makes your UI:
+
+- **Consistent** → the same design language everywhere.  
+- **Scalable** → easy to maintain in large projects.  
+- **Customizable** → change branding in one place, and it reflects everywhere.  
+
+---
+
+## 🛠️ How Tailwind Handles Theming
+
+### 1. The `theme` Object
+
+The `theme` section in `tailwind.config.js` controls all design tokens.  
+
+```js
+// tailwind.config.js
+export default {
+  theme: {
+    extend: {
+      colors: {
+        brand: {
+          DEFAULT: "#1D4ED8", // primary brand
+          light: "#3B82F6",
+          dark: "#1E40AF",
+        },
+      },
+      fontFamily: {
+        heading: ["Inter", "sans-serif"],
+        body: ["Roboto", "sans-serif"],
+      },
+      spacing: {
+        72: "18rem",
+        84: "21rem",
+      },
+    },
+  },
+};
