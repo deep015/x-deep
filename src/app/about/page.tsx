@@ -17,11 +17,21 @@ const AboutPage = () => {
       <Container className='min-h-screen px-9 md:pt-26 md:pb-14'>
 
         <Scales />
-      <Heading>About me !</Heading>
+      <Heading>A BIT ABOUT ME!</Heading>
       <SubHeading>
-        I’m a software engineer driven by innovation, with experience in creating seamless and reliable digital experiences.
+       I’m a creative developer driven by curiosity—not just about how
+                things work in code, but also about the emotions and experiences
+                behind them. I love building things that are not only
+                functional, but also intuitive and a little bit delightful. From
+                subtle micro-interactions to full experiences, I believe that
+                good design lives in the details.
       </SubHeading>
+      
       <College />
+      <SubHeading>
+        Highlights of my achievements, captured in a timeline.
+      </SubHeading>
+     <Timeline />
    </Container>
     </div>
   )

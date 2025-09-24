@@ -30,9 +30,9 @@ const BlogPage = async () => {
 
     return (
         <div className='min-h-screen flex items-start justify-start'>
-            <Container className='min-h-[200vh] p-10 md:pt-26 md:pb-14'>
+            <Container className='min-h-[200vh] px-15 md:pt-26 md:pb-14'>
               <Scales />
-                <h1 className='text-2xl font-bold md:text-4xl tracking-tighter text-primary'>
+                <h1 className='text-2xl pb-4 font-bold md:text-4xl tracking-tighter text-primary'>
                     All Blogs
                 </h1>
 
