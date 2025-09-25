@@ -17,6 +17,8 @@ const AboutPage = () => {
       <Container className='min-h-screen px-9 md:pt-26 md:pb-14'>
 
         <Scales />
+    <div className='my-9  lg:my-0'>
+
       <Heading>A BIT ABOUT ME!</Heading>
       <SubHeading>
        I’m a creative developer driven by curiosity—not just about how
@@ -28,10 +30,9 @@ const AboutPage = () => {
       </SubHeading>
       
       <College />
-      <SubHeading>
-        Highlights of my achievements, captured in a timeline.
-      </SubHeading>
+     <Heading>Key Accomplishments</Heading>
      <Timeline />
+     </div>
    </Container>
     </div>
   )

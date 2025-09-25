@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { IconCircleCheckFilled } from "@tabler/icons-react";
 import { cn } from "@/lib/utils";
+import SectionHeading from "./sectionheading";
 
 type ContentItem = {
   title: string | React.ReactNode;
@@ -34,9 +35,9 @@ const Timeline: React.FC = () => {
       title: "July 2025 - Aug 2025",
       content: [
         {
-          title: "SDE Intern",
+          title: "BlueStock Fintech-SDE Intern",
           description:
-            "Worked as a Software Development Intern, building and maintaining web applications.",
+            "Worked as a Software Development Intern, collaborating with the team to deliver efficient, maintainable, and user-friendly web solutions.",
         },
       ],
     },
@@ -45,7 +46,7 @@ const Timeline: React.FC = () => {
       content: [
         {
           title: "Graduation Completed",
-          description: "Successfully completed B.Sc/BCA graduation.",
+          description: "Earned a Bachelor’s degree in Computer Application, building a solid foundation in software development, problem-solving, and project implementation",
         },
       ],
     },
@@ -53,9 +54,9 @@ const Timeline: React.FC = () => {
       title: "Feb 2025 - May 2025",
       content: [
         {
-          title: "MERN Stack Training Program",
+          title: "Software Development Training Program",
           description:
-            "Completed intensive MERN stack training covering MongoDB, Express.js, React.js, and Node.js.",
+            "Successfully completed a comprehensive Software Development Trainee program, focusing on building scalable applications using the MERN stack.”",
         },
       ],
     },
@@ -73,6 +74,9 @@ const Timeline: React.FC = () => {
 
   return (
     <div ref={ref} className="shadow-section-inset px-4 py-4 my-6 space-y-2">
+      <SectionHeading>
+                Highlights of my achievements, captured in a timeline.
+      </SectionHeading>
       {data.map((year, yearIdx) => (
         <motion.div
           key={year.title}
@@ -91,9 +95,9 @@ const Timeline: React.FC = () => {
           >
             {year.title}
           </motion.h2>
-
+          <div className="border-l border-neutral-200 h-24 absolute mt-7 ml-5"></div>
           {/* Content under each year */}
-          <div className="pl-6 flex flex-col gap-4">
+          <div className="pl-6 flex flex-col gap-4 relative">
             {year.content.map((item, contentIdx) => (
               <motion.div
                 key={contentIdx}
@@ -156,7 +160,9 @@ const Step = ({
       }}
       className={cn("flex items-start gap-2", className)}
     >
+      
       <IconCircleCheckFilled className="h-4 w-4 mt-0.5 text-neutral-500" />
+      
       {children}
     </motion.div>
   );

@@ -9,22 +9,29 @@ import { projects } from '@/constants/project'
 import LandingBlog from './components/landingPage'
 
 import Scales from './components/scales'
+import SectionHeading from './components/sectionheading'
 //import LandingBlog from './components/landingPage'
 
 
 const Home = () => {
   return (
-    <div className='min-h-screen flex items-start justify-start '>
-      <Container className='isolate min-h-screen px-8 md:pt-26 md:pb-14'>
+    <div className='min-h-screen  flex items-start justify-start '>
+      <Container className='isolate  min-h-screen px-8 md:pt-26 md:pb-14'>
       <Scales />
-      <Heading>Hello , there ! 👋</Heading>
+      <div className='my-9  lg:my-0'>
+
+    < Heading>Hello , there ! 👋</Heading>
       <SubHeading >
         I’m a software engineer driven by innovation, with experience in creating seamless and reliable digital experiences.
       </SubHeading>
-      
-      <Projects projects={projects.slice(0,2)} />
       <Heading>Recent Blogs </Heading>
      <LandingBlog />
+     <Heading>Dev Tools </Heading>
+  
+      <Projects projects={projects.slice(0,3)} /> 
+      </div>
+      
+      
   
       </Container>
     </div>

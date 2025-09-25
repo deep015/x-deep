@@ -6,6 +6,7 @@ import Heading from '../components/heading'
 import SubHeading from '../components/subHeading'
 import ContactForm from '../components/contact-form'
 import Scales from '../components/scales'
+import SectionHeading from '../components/sectionheading'
 
 const ContactPage = () => {
   return (
@@ -15,7 +16,7 @@ const ContactPage = () => {
       <Scales />
       <Heading>Contact </Heading>
       <SubHeading>
-        I'm open to freelance offer, Reach out to me to inquire more about my work
+        I take your static mockups or Ul files and turn them into fast, responsive, and accessible websites. With clean, maintainable code and thoughtful interactions, I bring your designs to life - making sure they not only work across all devices, but also feel smooth, intuitive, and alive.
       </SubHeading>
       <ContactForm />
       </Container>

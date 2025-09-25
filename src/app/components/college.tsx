@@ -11,7 +11,7 @@ export function College() {
       title: "Kahi-Vishwanath Temple",
       image:
         "/banaras.jpeg",
-      className: "absolute top-10 left-[40%] rotate-[-5deg]",
+      className: "absolute top-25 right-[38%] rotate-[-8deg] md:top-10 md:left-[40%] md:rotate-[-5deg]",
     },
     {
       title: " Vindhyachal Temple ",
@@ -35,13 +35,13 @@ export function College() {
       title: "Vaishno Dev Temple",
       image:
         "./Katra.jpeg",
-      className: "absolute top-25 right-[39%] rotate-[2deg]",
+      className: "absolute top-18 right-[39%] rotate-[-9deg]",
     },
     {
       title: "Ram Mandir",
       image:
         "/Rammandir.jpeg",
-      className: "absolute top-24 right-[40%] rotate-[-7deg]",
+      className: "absolute top-24 right-[40%] rotate-[7deg]",
     },
     {
       title: "Hanumanth Dham",
@@ -61,7 +61,7 @@ It’s all part of my way of staying curious, staying creative, and staying in m
     <img
       src={item.image}
       alt={item.title}
-      className="pointer-events-none relative z-10 h-45 w-full object-cover"
+      className="pointer-events-none relative z-10 h-30 md:h-45 w-full object-cover"
     />
     <h3 className="mt-4 text-center text-base font-bold text-neutral-700 dark:text-neutral-300">
       {item.title}

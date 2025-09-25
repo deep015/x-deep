@@ -11,7 +11,7 @@ const truncate = (str: string, length: number) =>
 const formatDate = (dateStr: string): string => {
   const date = new Date(dateStr);
   return date.toLocaleDateString("en-US", {
-    weekday: "long",
+    weekday: "short",
     month: "short",
     day: "numeric",
     year: "numeric",
@@ -22,8 +22,8 @@ export default async function LandingBlog() {
   const allBlogs: Blog[] = await getBlogs();
 
   return (
-    <div className="px-4">
- <div className="flex flex-col gap-8 mt-1">
+    <div className="px-0 lg:px-4">
+ <div className="flex flex-col gap-9 lg:gap-8 mt-1">
       <SectionHeading className="mb-2" delay={0.2}>
         I Love writing things down.
       </SectionHeading>
@@ -42,7 +42,7 @@ export default async function LandingBlog() {
           key={blog.slug}
           className="text-primary"
         >
-          <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2 lg:gap-0 justify-between">
             <h2 className="text-primary text-base font-bold tracking-tight">
               {blog.title}
             </h2>

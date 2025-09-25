@@ -14,9 +14,9 @@ const Heading: React.FC<HeadingProps> = ({ as: Tag = "h1", children }) => {
           whileInView={{ opacity: 1,filter:"blur(0px)", y: 0 ,}}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5, ease:"easeInOut"}}
-          
+      className="mt-5"    
     >
-    <Tag className="text-2xl px-4 drop-shadow-sm font-bold md:text-4xl tracking-tighter
+    <Tag className="text-2xl px-3 drop-shadow-sm font-bold md:text-4xl tracking-tighter
      text-primary">
       {children}
     </Tag>

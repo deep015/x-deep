@@ -21,7 +21,7 @@ const BlogPage = async () => {
     const formatDate = (dateStr: string): string => {
         const date = new Date(dateStr)
         return date.toLocaleDateString("en-US", {
-            weekday: "long",
+            weekday: "short",
             month: "short",
             day: "numeric",
             year: "numeric",
@@ -30,17 +30,17 @@ const BlogPage = async () => {
 
     return (
         <div className='min-h-screen flex items-start justify-start'>
-            <Container className='min-h-[200vh] px-15 md:pt-26 md:pb-14'>
+            <Container className='min-h-[200vh] px-10 lg:px-15 md:pt-26 md:pb-14'>
               <Scales />
                 <h1 className='text-2xl pb-4 font-bold md:text-4xl tracking-tighter text-primary'>
                     All Blogs
                 </h1>
 
-                <div className='flex flex-col gap-8 mt-2'>
+                <div className='flex flex-col gap-10 lg:gap-8 mt-2'>
                     {allBlogs.map(blog => (
                         <Link href={`/blog/${blog.slug}`} key={blog.slug} className='text-primary'>
                             <div className="flex items-center justify-between">
-                                <h2 className='text-primary text-base font-bold tracking-tight'>
+                                <h2 className='text-primary  text-base font-bold tracking-tight'>
                                     {blog.title}
                                 </h2>
                                 {blog.date && <p className='text-secondary text-sm md:text-sm'>{formatDate(blog.date)}</p>}

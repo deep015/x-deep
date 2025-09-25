@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
+import SectionHeading from "./sectionheading";
+import Heading from "./heading";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -40,6 +42,7 @@ const ContactForm = () => {
       onSubmit={handleSubmit}
       className="py-10 flex flex-col gap-6 max-w-xl mx-auto"
     >
+     <Heading> Let's Get Connect</Heading>      
       <div className="flex flex-col gap-2">
         <label
           htmlFor="name"
@@ -53,7 +56,7 @@ const ContactForm = () => {
           name="name"
           onChange={handleChange}
           placeholder="Charlie"
-          className="shadow-aceternity rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+          className="shadow-aceternity rounded-md px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
         />
       </div>
 
@@ -70,7 +73,7 @@ const ContactForm = () => {
           name="email"
           onChange={handleChange}
           placeholder="you@example.com"
-          className="shadow-aceternity rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+          className="shadow-aceternity rounded-md px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
         />
       </div>
 

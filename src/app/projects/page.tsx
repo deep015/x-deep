@@ -10,7 +10,7 @@ const ProjectPage = () => {
   return (
   <div className='min-h-screen flex items-start justify-start '>
      
-      <Container className='min-h-screen px-9 md:pt-26 md:pb-14'>
+      <Container className='min-h-screen px-9 md:pt-26 md:pb-14 '>
       <Scales />
       <Heading>Projects! 👋</Heading>
       <SubHeading>
