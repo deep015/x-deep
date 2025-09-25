@@ -95,7 +95,7 @@ const Timeline: React.FC = () => {
           >
             {year.title}
           </motion.h2>
-          <div className="border-l border-neutral-200 h-24 absolute mt-7 ml-5"></div>
+<div className="absolute mt-16 ml-8 h-20 md:h-10 w-[1px] bg-gradient-to-b from-neutral-500 via-neutral-300  to-neutral-100"></div>
           {/* Content under each year */}
           <div className="pl-6 flex flex-col gap-4 relative">
             {year.content.map((item, contentIdx) => (
