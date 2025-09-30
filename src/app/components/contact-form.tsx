@@ -43,9 +43,10 @@ const ContactForm = () => {
       } else {
         toast.error("Oops! Something went wrong.");
       }
-    } catch (err) {
-      toast.error("Network error. Please try again later.");
-    } finally {
+    }catch (err) {
+  console.error(err); // log the actual error
+  toast.error("Network error. Please try again later.");
+}finally {
       setLoading(false);
     }
   };

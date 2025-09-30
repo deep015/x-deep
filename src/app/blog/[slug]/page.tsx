@@ -2,7 +2,7 @@
 import React from "react";
 import Container from "../../components/container";
 import { redirect } from "next/navigation";
-import { fetchBlogsFrontMatterBySlug, getSingleBlog, getAllBlogSlugs, FrontMatter } from "../../utils/mdx";
+import { fetchBlogsFrontMatterBySlug, getSingleBlog, getAllBlogSlugs } from "../../utils/mdx";
 
 // -----------------------------
 // 1️⃣ Generate static params for SSG
