@@ -13,19 +13,16 @@ import type { Metadata } from "next";
 // -----------------------------
 // 1️⃣ Generate static params for SSG
 // -----------------------------
-export async function generateStaticParams() {
+export async function generateStaticParams(): Promise<{ slug: string }[]> {
   const slugs = await getAllBlogSlugs();
-  // Ensure it returns { slug: string }[]
   return slugs.map((slug: string) => ({ slug }));
 }
 
 // -----------------------------
-// 2️⃣ Define props type
+// 2️⃣ Props type
 // -----------------------------
 interface BlogPageProps {
-  params: {
-    slug: string;
-  };
+  params: Promise<{ slug: string }>; // 👈 must be Promise now
 }
 
 // -----------------------------
@@ -34,7 +31,7 @@ interface BlogPageProps {
 export async function generateMetadata(
   { params }: BlogPageProps
 ): Promise<Metadata> {
-  const slug = params.slug;
+  const { slug } = await params; // 👈 await before using
   const frontmatter = await fetchBlogsFrontMatterBySlug(slug);
 
   if (!frontmatter?.title) {
@@ -47,6 +44,20 @@ export async function generateMetadata(
   return {
     title: `${frontmatter.title} - Deep`,
     description: frontmatter.description || "",
+    openGraph: {
+      title: frontmatter.title,
+      description: frontmatter.description || "",
+      images: frontmatter.image
+        ? [
+            {
+              url: frontmatter.image,
+              width: 1200,
+              height: 630,
+              alt: frontmatter.title,
+            },
+          ]
+        : [], // fallback if no image
+    },
   };
 }
 
@@ -54,10 +65,11 @@ export async function generateMetadata(
 // 4️⃣ Page component
 // -----------------------------
 export default async function SingleBlogPage({ params }: BlogPageProps) {
-  const blog = await getSingleBlog(params.slug);
+  const { slug } = await params; // 👈 await before use
+  const blog = await getSingleBlog(slug);
 
   if (!blog) {
-    redirect("/blog"); // Redirect if blog not found
+    redirect("/blog");
   }
 
   const { frontmatter, content } = blog;
@@ -65,14 +77,28 @@ export default async function SingleBlogPage({ params }: BlogPageProps) {
   return (
     <div className="min-h-screen flex items-start justify-start">
       <Container className="min-h-screen p-10 md:pt-26 md:pb-14">
-        <Image
-          className="my-20 object-cover max-h-96 w-full border border-neutral-200 
-          max-w-2xl mx-auto rounded-2xl shadow-xl"
-          src={frontmatter.image}
-          alt={frontmatter.title}
-          width={1200}   
-          height={630}   
-        />
+        {frontmatter.image ? (
+          <Image
+            className="my-20 object-cover max-h-96 w-full border border-neutral-200 
+            max-w-2xl mx-auto rounded-2xl shadow-xl"
+            src={frontmatter.image}
+            alt={frontmatter.title}
+            width={1200}
+            height={630}
+            priority
+          />
+        ) : (
+          // ✅ fallback image to fix "null" error
+          <Image
+            className="my-20 object-cover max-h-96 w-full border border-neutral-200 
+            max-w-2xl mx-auto rounded-2xl shadow-xl"
+            src="/default.svg"
+            alt="Default blog image"
+            width={1200}
+            height={630}
+            priority
+          />
+        )}
         <div className="prose mx-auto">{content}</div>
       </Container>
     </div>
