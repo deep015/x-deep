@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getBlogs, Blog } from "../utils/mdx";
 import SectionHeading from "./sectionheading";
 import MotionDiv from "./motion-div";
-import { div } from "framer-motion/client";
 
 const truncate = (str: string, length: number) =>
   str.length > length ? str.substring(0, length) + "..." : str;

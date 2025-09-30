@@ -9,8 +9,7 @@ import { projects } from '@/constants/project'
 import LandingBlog from './components/landingPage'
 
 import Scales from './components/scales'
-import SectionHeading from './components/sectionheading'
-//import LandingBlog from './components/landingPage'
+
 
 
 const Home = () => {
