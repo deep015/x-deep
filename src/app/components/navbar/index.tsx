@@ -38,7 +38,7 @@ const Navbar = () => {
 
   // ✅ Responsive transform ranges
   const y = useTransform(scrollY, [0, 100], isMobile ? [0, 6] : [0, 10])
-  const width = useTransform(scrollY, [0, 100], isMobile ? ['80%', '65%'] : ['65%', '53%'])
+  const width = useTransform(scrollY, [0, 100], isMobile ? ['90%', '75%'] : ['65%', '53%'])
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 20)
