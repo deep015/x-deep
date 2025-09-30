@@ -4,6 +4,7 @@ import {
   DraggableCardBody,
   DraggableCardContainer,
 } from "@/components/ui/draggable-card";
+import Image from "next/image";
 
 export function College() {
   const items = [
@@ -58,7 +59,7 @@ It’s all part of my way of staying curious, staying creative, and staying in m
 
      {items.map((item) => (
   <DraggableCardBody key={item.title} className={item.className}>
-    <img
+    <Image
       src={item.image}
       alt={item.title}
       className="pointer-events-none relative z-10 h-30 md:h-45 w-full object-cover"
