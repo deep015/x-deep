@@ -19,6 +19,9 @@ const ContactPage = () => {
         I take your static mockups or Ul files and turn them into fast, responsive, and accessible websites. With clean, maintainable code and thoughtful interactions, I bring your designs to life - making sure they not only work across all devices, but also feel smooth, intuitive, and alive.
       </SubHeading>
       <ContactForm />
+      <SectionHeading className='ml-4' >
+       Status:Currently Available for any type of Colloboration !
+      </SectionHeading >
       </Container>
     </div>
   )

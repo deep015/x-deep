@@ -22,7 +22,7 @@ const Home = () => {
 
     < Heading>Hello , there ! 👋</Heading>
       <SubHeading >
-        I’m a software engineer driven by innovation, with experience in creating seamless and reliable digital experiences.
+        I’m a Frontend Developer driven by innovation, with experience in creating seamless and reliable digital experiences.
       </SubHeading>
       <Heading>Recent Blogs </Heading>
      <LandingBlog />

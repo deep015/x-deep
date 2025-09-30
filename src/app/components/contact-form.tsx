@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { toast } from "sonner";
-import SectionHeading from "./sectionheading";
 import Heading from "./heading";
 
 const ContactForm = () => {
@@ -9,32 +8,46 @@ const ContactForm = () => {
     email: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("form submitted");
 
     const { name, email, message } = formData;
-
     if (!name || !email || !message) {
       toast.error("Please fill all the fields");
       return;
     }
 
-    // mock API call
-    await new Promise((resolve) =>
-      setTimeout(() => {
-        resolve("ok");
-      }, 1000)
-    );
+    setLoading(true);
 
-    toast.success("Form submitted successfully!");
-  };
+    try {
+      const res = await fetch("https://formspree.io/f/xyznwpkz", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+      if (res.ok) {
+        toast.success("Form submitted successfully!");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        toast.error("Oops! Something went wrong.");
+      }
+    } catch (err) {
+      toast.error("Network error. Please try again later.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -42,7 +55,8 @@ const ContactForm = () => {
       onSubmit={handleSubmit}
       className="py-10 flex flex-col gap-6 max-w-xl mx-auto"
     >
-     <Heading> Let's Get Connect</Heading>      
+      <Heading>Let’s Get Connect</Heading>
+
       <div className="flex flex-col gap-2">
         <label
           htmlFor="name"
@@ -54,8 +68,10 @@ const ContactForm = () => {
           type="text"
           id="name"
           name="name"
+          value={formData.name} // ✅ bind value
           onChange={handleChange}
           placeholder="Charlie"
+          required
           className="shadow-aceternity rounded-md px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
         />
       </div>
@@ -71,8 +87,10 @@ const ContactForm = () => {
           type="email"
           id="email"
           name="email"
+          value={formData.email} // ✅ bind value
           onChange={handleChange}
           placeholder="you@example.com"
+          required
           className="shadow-aceternity rounded-md px-2 py-2 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
         />
       </div>
@@ -88,17 +106,20 @@ const ContactForm = () => {
           rows={5}
           id="message"
           name="message"
+          value={formData.message} // ✅ bind value
           onChange={handleChange}
-          placeholder="write here..."
+          placeholder="Write here..."
+          required
           className="resize-none shadow-aceternity rounded-md px-2 py-1 focus:outline-none focus:ring-2 focus:ring-primary text-sm"
         />
       </div>
 
       <button
         type="submit"
-        className="rounded-md bg-primary px-4 py-2 text-white"
+        disabled={loading}
+        className="rounded-md bg-primary px-4 py-2 text-white disabled:opacity-50"
       >
-        Send Message
+        {loading ? "Sending..." : "Send Message"}
       </button>
     </form>
   );

@@ -5,6 +5,8 @@ import { getBlogs } from '../utils/mdx'
 import Link from 'next/link'  // use built-in Next.js Link for server components
 import { Metadata } from 'next'
 import Scales from '../components/scales'
+import SubHeading from '../components/subHeading'
+import Heading from '../components/heading'
 
  export const metadata:Metadata = {
     title: 'All Blogs - Deepraj',
@@ -32,9 +34,10 @@ const BlogPage = async () => {
         <div className='min-h-screen flex items-start justify-start'>
             <Container className='min-h-[200vh] px-10 lg:px-15 md:pt-26 md:pb-14'>
               <Scales />
-                <h1 className='text-2xl pb-4 font-bold md:text-4xl tracking-tighter text-primary'>
-                    All Blogs
-                </h1>
+              <Heading> All Blogs</Heading>
+                <SubHeading>
+                    Dedicated to continuous learning, I write blogs about newly acquired technologies, demonstrating technical growth, hands-on experience, and knowledge sharing on my portfolio platform.
+                </SubHeading>
 
                 <div className='flex flex-col gap-10 lg:gap-8 mt-2'>
                     {allBlogs.map(blog => (

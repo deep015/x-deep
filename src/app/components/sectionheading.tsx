@@ -59,7 +59,7 @@ const Background =() =>{
       duration:0.3,
       ease:'easeInOut'
      }}
-     className="absolute h-full w-full inset-0 scale-[1.04] bg-neutral-100">
+     className="absolute h-full  w-full inset-0 scale-[1.04] bg-neutral-100">
       <div className="h-1 w-1 animate-pulse rounded-full absolute -top-px  -left-px bg-neutral-200">
       </div>
       <div className="h-1 w-1 animate-pulse rounded-full absolute -top-px -right-px bg-neutral-200">

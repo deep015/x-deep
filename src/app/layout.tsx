@@ -26,7 +26,7 @@ export default function RootLayout({
       <body className={`antialiased relative min-h-screen w-full [--pattern-fg:var(--color-gray-950)]/5 bg-neutral-50 dark:bg-neutral-700 ${inter.className}`}
       suppressHydrationWarning
       >
-     <Toaster position="top-center"/>
+      <Toaster position="top-center" richColors />
           <Navbar />
           {children}
         <Footer />
