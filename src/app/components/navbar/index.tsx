@@ -14,7 +14,7 @@ import {
 const Navbar = () => {
   const navItems = [
     { title: 'About', href: '/about' },
-    { title: 'Projects', href: '/projects' },
+    { title: 'DevTools', href: '/devtools' },
     { title: 'Contact', href: '/contact' },
     { title: 'Blog', href: '/blog' }
   ]
@@ -38,7 +38,7 @@ const Navbar = () => {
 
   // ✅ Responsive transform ranges
   const y = useTransform(scrollY, [0, 100], isMobile ? [0, 6] : [0, 10])
-  const width = useTransform(scrollY, [0, 100], isMobile ? ['90%', '75%'] : ['65%', '53%'])
+  const width = useTransform(scrollY, [0, 100], isMobile ? ['88%', '75%'] : ['65%', '53%'])
 
   useMotionValueEvent(scrollY, 'change', (latest) => {
     setScrolled(latest > 20)
