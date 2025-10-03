@@ -12,7 +12,7 @@ const ProjectPage = () => {
      
       <Container className='min-h-screen px-9 md:pt-26 md:pb-14 '>
       <Scales />
-      <Heading>Projects! 👋</Heading>
+      <Heading>DevTools! 👋</Heading>
       <SubHeading>
         I’m a software engineer driven by innovation, with experience in creating seamless and reliable digital experiences.
       </SubHeading>
